@@ -255,32 +255,36 @@ p { line-height: 1.5em; }
 $(document).ready(function()
 {
 
-    var updateOutput = function(e)
+    var updateOutput = function(l, e)
     {
-        var list   = e.length ? e : $(e.target),
+     
+        var el   = e.length ? e : $(e.target),
+            list = l.length ? l : $(l.target),
             output = list.data('output');
+
         if (window.JSON) {
-            output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+            output.val('Moved item : ' + (el.attr('data-id')?el.attr('data-id'):'N/A') + ' | ' + window.JSON.stringify(list.nestable('serialize')));//, null, 2));
         } else {
-            output.val('JSON browser support required for this demo.');
+            output.val('Moved item : ' + (el.attr('data-id')?el.attr('data-id'):'N/A') + ' | ' + 'JSON browser support required for this demo.');
         }
+
     };
 
     // activate Nestable for list 1
     $('#nestable').nestable({
-        group: 1
-    })
-    .on('change', updateOutput);
+        group: 1,
+        callback : updateOutput
+    });
     
     // activate Nestable for list 2
     $('#nestable2').nestable({
-        group: 1
-    })
-    .on('change', updateOutput);
+        group: 1,
+        callback : updateOutput
+    });
 
     // output initial serialised data
-    updateOutput($('#nestable').data('output', $('#nestable-output')));
-    updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+    updateOutput($('#nestable').data('output', $('#nestable-output')), {});
+    updateOutput($('#nestable2').data('output', $('#nestable2-output')), {});
 
     $('#nestable-menu').on('click', function(e)
     {

@@ -37,10 +37,13 @@ Then activate with jQuery like so:
 
 ### Events
 
-The `change` event is fired when items are reordered.
+The `callback` provided as an option is fired when elements are reordered or nested.
 
-    $('.dd').on('change', function() {
-        /* on change event */
+    $('.dd').nestable({ 
+      callback: function(l,e){
+            // l is the main container
+            // e is the element that was moved
+        }
     });
 
 ### Methods
@@ -59,6 +62,7 @@ You can change the follow options:
 
 * `maxDepth` number of levels an item can be nested (default `5`)
 * `group` group ID to allow dragging between lists (default `0`)
+* `callback` callback function when an element has been changed (default `null`)
 
 These advanced config options are also available:
 
@@ -79,6 +83,20 @@ These advanced config options are also available:
 
 ## Change Log
 
+### 13th March 2013
+
+* [tchapi] Replace previous `change` behaviour with a callback
+
+### 12th February 2013
+
+* Merge fix from [jails] : Fix change event triggered twice.
+
+### 3rd December 2012
+
+* [dbushell] add no-drag class for handle contents
+* [dbushell] use `el.closest` instead of `el.parents`
+* [dbushell] fix scroll offset on document.elementFromPoint()
+
 ### 15th October 2012
 
 * Merge for Zepto.js support
@@ -95,5 +113,6 @@ These advanced config options are also available:
 * * *
 
 Author: David Bushell [http://dbushell.com](http://dbushell.com/) [@dbushell](http://twitter.com/dbushell/)
+Contributors : Cyril  [http://tchap.me](http://tchap.me)
 
-Copyright © 2012 David Bushell | BSD & MIT license
+Copyright © 2012-2013 David Bushell | BSD & MIT license

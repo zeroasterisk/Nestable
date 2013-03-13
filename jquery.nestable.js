@@ -1,5 +1,6 @@
 /*!
- * Nestable jQuery Plugin - Copyright (c) 2012 David Bushell - http://dbushell.com/
+ * Nestable jQuery Plugin - Copyright (c) 2013 David Bushell - http://dbushell.com/
+ * Contributed : Cyril (tchapi) http://tchap.me
  * Dual-licensed under the BSD or MIT licenses
  */
 ;(function($, window, document, undefined)
@@ -47,7 +48,8 @@
             collapseBtnHTML : '<button data-action="collapse" type="button">Collapse</button>',
             group           : 0,
             maxDepth        : 5,
-            threshold       : 20
+            threshold       : 20,
+            callback        : null
         };
 
     function Plugin(element, options)
@@ -293,10 +295,11 @@
             this.placeEl.replaceWith(el);
 
             this.dragEl.remove();
-            this.el.trigger('change');
-            if (this.hasNewRoot) {
-                this.dragRootEl.trigger('change');
+
+            if($.isFunction(this.options.callback)) {
+              this.options.callback.call(this, this.dragRootEl, el);
             }
+
             this.reset();
         },
 
