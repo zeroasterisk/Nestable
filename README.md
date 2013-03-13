@@ -113,6 +113,7 @@ These advanced config options are also available:
 * * *
 
 Author: David Bushell [http://dbushell.com](http://dbushell.com/) [@dbushell](http://twitter.com/dbushell/)
+
 Contributors : Cyril  [http://tchap.me](http://tchap.me)
 
 Copyright © 2012-2013 David Bushell | BSD & MIT license
