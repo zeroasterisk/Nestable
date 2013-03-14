@@ -74,6 +74,7 @@ These advanced config options are also available:
 * `dragClass` The class applied to the list element that is being dragged (default `'dd-dragel'`)
 * `handleClass` The class of the content element inside each list item (default `'dd-handle'`)
 * `collapsedClass` The class applied to lists that have been collapsed (default `'dd-collapsed'`)
+* `noChildrenClass` The class applied to items that cannot have children (default `'dd-nochildren'`)
 * `placeClass` The class of the placeholder element (default `'dd-placeholder'`)
 * `emptyClass` The class used for empty list placeholder elements (default `'dd-empty'`)
 * `expandBtnHTML` The HTML text used to generate a list item expand button (default `'<button data-action="expand">Expand></button>'`)
@@ -82,6 +83,10 @@ These advanced config options are also available:
 **Inspect the [Nestable Demo](http://dbushell.github.com/Nestable/) for guidance.**
 
 ## Change Log
+
+### 14th March 2013
+
+* [tchapi] Merge Craig Sansam' branch [https://github.com/craigsansam/Nestable/](https://github.com/craigsansam/Nestable/) - Add the noChildrenClass option
 
 ### 13th March 2013
 
@@ -114,6 +119,6 @@ These advanced config options are also available:
 
 Author: David Bushell [http://dbushell.com](http://dbushell.com/) [@dbushell](http://twitter.com/dbushell/)
 
-Contributors : Cyril  [http://tchap.me](http://tchap.me)
+Contributors : Cyril [http://tchap.me](http://tchap.me), Craig Sansam
 
 Copyright © 2012-2013 David Bushell | BSD & MIT license
