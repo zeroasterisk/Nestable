@@ -16,7 +16,7 @@ Nestable is an experimental example and not under active development. If it suit
 ## Usage
 
 Write your nested HTML lists like so:
-
+```html
     <div class="dd">
         <ol class="dd-list">
             <li class="dd-item" data-id="1">
@@ -38,7 +38,7 @@ Write your nested HTML lists like so:
             </li>
         </ol>
     </div>
-
+```
 Then activate with jQuery like so:
 
     $('.dd').nestable({ /* config options */ });
@@ -46,24 +46,24 @@ Then activate with jQuery like so:
 ### Events
 
 The `callback` provided as an option is fired when elements are reordered or nested.
-
+```js
     $('.dd').nestable({ 
       callback: function(l,e){
             // l is the main container
             // e is the element that was moved
         }
     });
-
+```
 ### Methods
 
 You can get a serialised object with all `data-*` attributes for each item.
-
+```js
     $('.dd').nestable('serialize');
-
+```
 The serialised JSON for the example above would be:
-
+```json
     [{"id":1},{"id":2},{"id":3,"children":[{"id":4},{"id":5}]}]
-
+```
 ### Configuration
 
 You can change the follow options:
