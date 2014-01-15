@@ -160,6 +160,8 @@ p { line-height: 1.5em; }
     </div>
 
 
+<p><strong>PLEASE NOTE: I cannot provide any support or guidance beyond this README. If this code helps you that's great but I have no plans to develop Nestable beyond this demo (it's not a final product and has limited functionality). I cannot reply to any requests for help.</strong></p>
+
     <menu id="nestable-menu">
         <button type="button" data-action="expand-all">Expand All</button>
         <button type="button" data-action="collapse-all">Collapse All</button>
@@ -186,32 +188,33 @@ p { line-height: 1.5em; }
                             </ol>
                         </li>
                         <li class="dd-item" data-id="9"><div class="dd-handle">Item 9</div></li>
-                        <li class="dd-item" data-id="10"><div class="dd-handle">Item 10</div></li>
+                        <li class="dd-item dd-nochildren" data-id="10"><div class="dd-handle">Item 10 (No Children)</div></li>
+                        <li class="dd-item" data-id="11"><div class="dd-handle">Item 11</div></li>
                     </ol>
-                </li>
-                <li class="dd-item" data-id="11">
-                    <div class="dd-handle">Item 11</div>
                 </li>
                 <li class="dd-item" data-id="12">
                     <div class="dd-handle">Item 12</div>
+                </li>
+                <li class="dd-item" data-id="13">
+                    <div class="dd-handle">Item 13</div>
                 </li>
             </ol>
         </div>
 
         <div class="dd" id="nestable2">
             <ol class="dd-list">
-                <li class="dd-item" data-id="13">
-                    <div class="dd-handle">Item 13</div>
-                </li>
                 <li class="dd-item" data-id="14">
                     <div class="dd-handle">Item 14</div>
                 </li>
                 <li class="dd-item" data-id="15">
                     <div class="dd-handle">Item 15</div>
+                </li>
+                <li class="dd-item" data-id="16">
+                    <div class="dd-handle">Item 16</div>
                     <ol class="dd-list">
-                        <li class="dd-item" data-id="16"><div class="dd-handle">Item 16</div></li>
                         <li class="dd-item" data-id="17"><div class="dd-handle">Item 17</div></li>
                         <li class="dd-item" data-id="18"><div class="dd-handle">Item 18</div></li>
+                        <li class="dd-item" data-id="19"><div class="dd-handle">Item 19</div></li>
                     </ol>
                 </li>
             </ol>
@@ -234,23 +237,23 @@ p { line-height: 1.5em; }
 
         <div class="dd" id="nestable3">
             <ol class="dd-list">
-                <li class="dd-item dd3-item" data-id="13">
-                    <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">Item 13</div>
-                </li>
                 <li class="dd-item dd3-item" data-id="14">
                     <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">Item 14</div>
                 </li>
                 <li class="dd-item dd3-item" data-id="15">
                     <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">Item 15</div>
+                </li>
+                <li class="dd-item dd3-item" data-id="16">
+                    <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">Item 16</div>
                     <ol class="dd-list">
-                        <li class="dd-item dd3-item" data-id="16">
-                            <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">Item 16</div>
-                        </li>
                         <li class="dd-item dd3-item" data-id="17">
                             <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">Item 17</div>
                         </li>
                         <li class="dd-item dd3-item" data-id="18">
                             <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">Item 18</div>
+                        </li>
+                        <li class="dd-item dd3-item" data-id="19">
+                            <div class="dd-handle dd3-handle">Drag</div><div class="dd3-content">Item 19</div>
                         </li>
                     </ol>
                 </li>
@@ -268,32 +271,36 @@ p { line-height: 1.5em; }
 $(document).ready(function()
 {
 
-    var updateOutput = function(e)
+    var updateOutput = function(l, e)
     {
-        var list   = e.length ? e : $(e.target),
+     
+        var el   = e.length ? e : $(e.target),
+            list = l.length ? l : $(l.target),
             output = list.data('output');
+
         if (window.JSON) {
-            output.val(window.JSON.stringify(list.nestable('serialize')));//, null, 2));
+            output.val('Moved item : ' + (el.attr('data-id')?el.attr('data-id'):'N/A') + ' | ' + window.JSON.stringify(list.nestable('serialize')));//, null, 2));
         } else {
-            output.val('JSON browser support required for this demo.');
+            output.val('Moved item : ' + (el.attr('data-id')?el.attr('data-id'):'N/A') + ' | ' + 'JSON browser support required for this demo.');
         }
+
     };
 
     // activate Nestable for list 1
     $('#nestable').nestable({
-        group: 1
-    })
-    .on('change', updateOutput);
+        group: 1,
+        callback : updateOutput
+    });
     
     // activate Nestable for list 2
     $('#nestable2').nestable({
-        group: 1
-    })
-    .on('change', updateOutput);
+        group: 1,
+        callback : updateOutput
+    });
 
     // output initial serialised data
-    updateOutput($('#nestable').data('output', $('#nestable-output')));
-    updateOutput($('#nestable2').data('output', $('#nestable2-output')));
+    updateOutput($('#nestable').data('output', $('#nestable-output')), {});
+    updateOutput($('#nestable2').data('output', $('#nestable2-output')), {});
 
     $('#nestable-menu').on('click', function(e)
     {
