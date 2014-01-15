@@ -3,7 +3,7 @@ Nestable
 
 ## PLEASE NOTE
 
-**I cannot provide any support or guidance beyond this README. If this code helps you that's great but I have no plans to develop Nestable beyond this demo (it's not a final product and has limited functionality). I cannot reply to any requests for help.**
+**https://github.com/dbushell cannot provide any support or guidance beyond this README, but this repo is still under development somehow.**
 
 * * *
 
@@ -80,12 +80,13 @@ These advanced config options are also available:
 * `listClass` The class of all list elements (default `'dd-list'`)
 * `itemClass` The class of all list item elements (default `'dd-item'`)
 * `dragClass` The class applied to the list element that is being dragged (default `'dd-dragel'`)
+* `noDragClass` The class applied to an element to prevent dragging (default `'dd-nodrag'`)
 * `handleClass` The class of the content element inside each list item (default `'dd-handle'`)
 * `collapsedClass` The class applied to lists that have been collapsed (default `'dd-collapsed'`)
 * `noChildrenClass` The class applied to items that cannot have children (default `'dd-nochildren'`)
 * `placeClass` The class of the placeholder element (default `'dd-placeholder'`)
 * `emptyClass` The class used for empty list placeholder elements (default `'dd-empty'`)
-* `expandBtnHTML` The HTML text used to generate a list item expand button (default `'<button data-action="expand">Expand></button>'`)
+* `expandBtnHTML` The HTML text used to generate a list item expand button (default `'<button data-action="expand">Expand</button>'`)
 * `collapseBtnHTML` The HTML text used to generate a list item collapse button (default `'<button data-action="collapse">Collapse</button>'`)
 
 **Inspect the [Nestable Demo](http://dbushell.github.com/Nestable/) for guidance.**
